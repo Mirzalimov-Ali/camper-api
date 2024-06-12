@@ -1,0 +1,45 @@
+const mongoose = require("mongoose")
+
+const usedCarSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    photo: {
+        type: String,
+        required: true,
+    },
+    cost: {
+        type: String,
+        required: true,
+    },
+    license: {
+        type: String,
+        required: true,
+        enum: ["1종 보통", "2종 보통"],
+    },
+    people: {
+        type: Number,
+        required: true,
+        max: 6,
+    },
+    date: {
+        type: Date,
+        required: false,
+    },
+    company: {
+        type: String,
+        required: true,
+    },
+    location: {
+        type: String,
+        required: true,
+    },
+    rating: {
+        type: String,
+        required: true,
+        default: "0.0",
+    }
+}, {timestamps: true})
+
+module.exports = mongoose.model("UsedCar", usedCarSchema)
