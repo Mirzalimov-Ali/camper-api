@@ -21,6 +21,9 @@ if(process.env.NODE_ENV === "development") {
     app.use(morgan("dev"))
 }   
 
+// Routes
+app.use("/v1/auth", require("./routes/user.routes"))
+
 
 // Server create
 const PORT = process.env.PORT || 4000
