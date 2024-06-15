@@ -4,10 +4,11 @@ const tuningSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
-    photo: {
+    type: {
         type: String,
-        required: true,
+        required: true
     },
     cost: {
         type: String,
@@ -24,7 +25,7 @@ const tuningSchema = new mongoose.Schema({
         max: 6,
     },
     date: {
-        type: Date,
+        type: String,
         required: false,
     },
     company: {

@@ -13,10 +13,6 @@ const campingPlaceSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    photo: {
-        type: String,
-        required: true,
-    },
     phone_number: {
         type: String,
         required: true,
@@ -52,4 +48,4 @@ const campingPlaceSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.Model("CampingPlace", campingPlaceSchema)
+module.exports = mongoose.model("CampingPlace", campingPlaceSchema)

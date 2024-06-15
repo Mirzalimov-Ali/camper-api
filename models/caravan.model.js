@@ -4,14 +4,15 @@ const caravanSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-    },
-    photo: {
-        type: String,
-        required: true,
+        unique: true,
     },
     cost: {
         type: String,
         required: true,
+    },
+    type: {
+        type: String,
+        required: true
     },
     license: {
         type: String,
@@ -24,7 +25,7 @@ const caravanSchema = new mongoose.Schema({
         max: 6,
     },
     date: {
-        type: Date,
+        type: String,
         required: false,
     },
     company: {

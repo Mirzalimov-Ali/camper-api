@@ -21,9 +21,23 @@ if(process.env.NODE_ENV === "development") {
     app.use(morgan("dev"))
 }   
 
-// Routes
+// Routes Auth
 app.use("/v1/auth", require("./routes/user.routes"))
 
+// Routes Motor
+app.use("/v1/motor", require("./routes/motor.routes"))
+
+// Routes Caravan
+app.use("/v1/caravan", require("./routes/caravan.routes"))
+
+// Routes Tuning
+app.use("/v1/tuning", require("./routes/tuning.routes"))
+
+// Routes Used Car
+app.use("/v1/usedCar", require("./routes/usedCar.routes"))
+
+// Routes Camping Place
+app.use("/v1/campingPlace", require("./routes/campingPlace.routes"))
 
 // Server create
 const PORT = process.env.PORT || 4000
