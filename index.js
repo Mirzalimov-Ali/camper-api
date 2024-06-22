@@ -42,5 +42,5 @@ app.use("/v1/campingPlace", require("./routes/campingPlace.routes"))
 // Server create
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
-    console.log(`server is running on https://localhost:${PORT}`.blue)
+    console.log(`server is running on http://localhost:${PORT}`.blue)
 })
