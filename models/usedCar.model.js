@@ -40,6 +40,9 @@ const usedCarSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: "0.0",
+    },
+    photo: {
+        type: String,
     }
 }, {timestamps: true})
 

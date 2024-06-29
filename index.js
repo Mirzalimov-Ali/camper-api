@@ -3,6 +3,8 @@ const dotenv = require("dotenv")
 const connectDB = require("./config/db")
 const morgan = require("morgan")
 const colors = require("colors")
+const errorHandler = require("./middleware/errorHandler")
+const path = require("path")
 
 // initial dotenv (.env)
 dotenv.config()
@@ -12,6 +14,8 @@ connectDB()
 
 // App instance
 const app = express();
+
+app.use(express.static(path.join(__dirname, "public")))
 
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -38,6 +42,9 @@ app.use("/v1/usedCar", require("./routes/usedCar.routes"))
 
 // Routes Camping Place
 app.use("/v1/campingPlace", require("./routes/campingPlace.routes"))
+
+// Error handler
+app.use(errorHandler)
 
 // Server create
 const PORT = process.env.PORT || 4000

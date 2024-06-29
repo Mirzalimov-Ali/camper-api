@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -23,9 +24,13 @@ const userSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: false,
+    },
+    avatar: {
+        type: String,
     }
 }, {timestamps: true})
 
+// when saved
 userSchema.pre("save", async function(next){
     if(!this.isModified("password")) {
         next()
@@ -35,8 +40,18 @@ userSchema.pre("save", async function(next){
     this.password = await bcrypt.hash(this.password, salt)
 })
 
+// check password
 userSchema.methods.matchPassword = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
+
+// JWT setting
+userSchema.methods.generatedJwtToken = function() {
+    return jwt.sign(
+        { id: this._id },
+        process.env.JWT_TOKEN_SECRET, // secret key
+        { expiresIn: `24h` } // 1 day
+    )
+  }
 
 module.exports = mongoose.model("User", userSchema)

@@ -8,12 +8,12 @@ const addNewMotor = async (req, res) => {
         const apiKey = uuid.v4()
 
         const motor = await Motor.create({
-            name, cost, type, license, people, date, company, location, rating, apiKey
+            name, cost, type, license, people, date, company, location, rating, apiKey, motorCarPhoto: req.file ? "/uploads/motors" + req.file.filename : "",
         }) 
 
         res.status(201).json({
             success: true,
-            data: motor 
+            data: motor,
         })
     } catch (error) {
         res.status(500).json({

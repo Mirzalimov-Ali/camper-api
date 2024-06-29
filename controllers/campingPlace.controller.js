@@ -8,7 +8,7 @@ const addNewCampingPlace = async (req, res) => {
         const apiKey = uuid.v4()
 
         const campingPlace = await CampingPlace.create({
-            name, location, city, phone_number, working_hour, home_page, description, map, apiKey
+            name, location, city, phone_number, working_hour, home_page, description, map, apiKey, campingPlacePhoto: req.file ? "/uploads/campingPlaces" + req.file.filename : "",
         })
 
         res.status(201).json({

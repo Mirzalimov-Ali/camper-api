@@ -8,7 +8,7 @@ const addNewUsedCar = async (req, res) => {
         const apiKey = uuid.v4()
 
         const usedCar = await UsedCar.create({
-            name, type, cost, license, people, date, company, location, rating, apiKey
+            name, type, cost, license, people, date, company, location, rating, apiKey, usedCarPhoto: req.file ? "/uploads/usedCars" + req.file.filename : "",
         })
 
         res.status(201).json({

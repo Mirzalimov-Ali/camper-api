@@ -8,7 +8,7 @@ const addNewTuning = async (req, res) => {
         const apiKey = uuid.v4()
 
         const tuning = await Tuning.create({
-            name, type, cost, license, people, date, company, location, rating, apiKey
+            name, type, cost, license, people, date, company, location, rating, apiKey, tuningCarPhoto: req.file ? "/uploads/tunings" + req.file.filename : "",
         })
 
         res.status(201).json({

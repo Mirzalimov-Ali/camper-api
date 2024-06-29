@@ -8,7 +8,7 @@ const addNewCaravan = async (req, res) => {
         const apiKey = uuid.v4()
 
         const caravan = await Caravan.create({
-            name, cost, type, license, people, date, company, location, rating, apiKey
+            name, cost, type, license, people, date, company, location, rating, apiKey, caravanCarPhoto: req.file ? "/uploads/caravans" + req.file.filename : "",
         })
 
         res.status(201).json({
